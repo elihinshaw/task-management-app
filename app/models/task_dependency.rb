@@ -1,0 +1,2 @@
+class TaskDependency < ApplicationRecord
+end

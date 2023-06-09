@@ -3,4 +3,12 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
+
+  get "/signup" => "users#new"
+  post "/users" => "users#create"
+
+  resources :tasks
+  resources :comments
+  resources :categories
+  resources :task_dependencies
 end

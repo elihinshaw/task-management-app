@@ -1,52 +1,52 @@
 class TasksController < ApplicationController
   def index
-    @tasks = Tasks.all
+    @tasks = Task.all
     render :index
   end
 
   def show
-    @tasks = Tasks.find_by(id: params[:id])
+    @task = Task.find_by(id: params[:id])
     render :show
   end
 
   def new
-    @tasks = Tasks.new
+    @task = Task.new
     render :new
   end
 
   def create
-    @tasks = Tasks.create(
-      name: params[:tasks][:name],
-      description: params[:tasks][:description],
-      priority: params[:tasks][:priority],
-      due_date: params[:tasks][:due_date],
-      status: params[:tasks][:status],
-      progress: params[:tasks][:progress],
+    @task = Task.create(
+      name: params[:task][:name],
+      description: params[:task][:description],
+      priority: params[:task][:priority],
+      due_date: params[:task][:due_date],
+      status: params[:task][:status],
+      progress: params[:task][:progress],
     )
     redirect_to "/tasks"
   end
 
   def edit
-    @tasks = Tasks.find_by(id: params[:id])
+    @task = Task.find_by(id: params[:id])
     render :edit
   end
 
   def update
-    @tasks = Tasks.find_by(id: params[:id])
-    @tasks.update(
-      name: params[:tasks][:name],
-      description: params[:tasks][:description],
-      priority: params[:tasks][:priority],
-      due_date: params[:tasks][:due_date],
-      status: params[:tasks][:status],
-      progress: params[:tasks][:progress],
+    @task = Task.find_by(id: params[:id])
+    @task.update(
+      name: params[:task][:name],
+      description: params[:task][:description],
+      priority: params[:task][:priority],
+      due_date: params[:task][:due_date],
+      status: params[:task][:status],
+      progress: params[:task][:progress],
     )
     redirect_to "/tasks"
   end
 
   def destroy
-    @tasks = Tasks.find_by(id: params[:id])
-    @tasks.destroy
+    @task = Task.find_by(id: params[:id])
+    @task.destroy
     redirect_to "/tasks", status: :see_other
   end
 end
